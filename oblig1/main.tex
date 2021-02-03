@@ -1,0 +1,132 @@
+\documentclass{article}[norsk]
+\usepackage[utf8]{inputenc}
+\usepackage[norsk]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{enumitem}
+
+\title{MAT1140 - Oblig 1}
+\author{Jon-Magnus Rosenblad}
+\date{September 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Oppgave 1}
+Vi definerer relasjonen $\sim$ på $X$ ved
+\begin{equation*}
+	f\sim g \Longleftrightarrow \left\{n\in \mathbb{N} \,|\, f(n) \neq g(n)\right\}
+\end{equation*}
+og vi definerer mengden $D_{f,g}$ for alle funksjoner $f,g\in X$ ved 
+\begin{equation*}
+D_{f,g} = \left\{n\in\mathbb{N} \, |\, f(n)\neq g(n)\right\}.
+\end{equation*}
+\begin{enumerate}[label=(\roman*)]
+	\item Vi ser at relasjonen er refleksiv, ettersom for enhver $f\in X$ har vi at $D_{f,f}=\left\{n \in \mathbb{N}\,|\, f(n) \neq f(n)\right\}=\emptyset$ som er endelig, så $\forall f \in X,\, f\sim f$ og dermed er $\sim$ refleksiv.  
+    
+    Videre ser vi at $D_{f,g}=D_{g,f}$ , så $f\sim g\Rightarrow g\sim f$. Dermed er $\sim$ symmetrisk.
+    
+    Så antar vi at vi har $f,g,h\in X$, $f\sim g$ og $g\sim h$, dvs. $D_{f,g}$ er endelig og $D_{g,h}$ er endelig. Vi ser også at $D_{f,h} \subseteq D_{f,g}\bigcup D_{g,h}$ og $D_{f,g}\bigcup D_{g,h}$ er endelig, så siden en delmengde av en endelig mengde også er endelig må $D_{f,h}$ være endelig, så $f\sim h$, og  dermed er $\sim$ transitiv. 
+    
+    Siden $\sim$ er en refleksiv, symmetrisk og transitiv relasjon er $\sim$ ekvivalensrelasjon.
+    
+    \item Vi antar at $f_1 \sim f_2$ og $g_1 \sim g_2$, så $D_{f_1, f_2}$ og $D_{g_1, g_2} $ er endelige mengder. Vi ser så at for at $f_1(n)g_1(n) \neq f_2(n)g_2(n)$ må $f_1(n)\neq f_2(n)$ eller $g_1(n)\neq g_2(n)$, men vi vet at dette skjer bare i et endelig antall steder, nemlig $D_{f_1, f_2}\bigcup D_{g_1, g_2}$, så $D_{f_1g_1, f_2g_2}\subseteq D_{f_1, f_2}\bigcup D_{g_1, g_2}$ og dermed er $f_1g_1\sim f_2 g_2$ 
+    
+    \item %At operasjonen $\cdot$ er veldefinert følger fra oppgave forrige oppgave.
+    Vi ser at definisjonen av $\cdot$ er veldefinert, for uavhengig av hvilke representanter $f$ og $g$ vil velger for henholdsvis $[f]$ og $[g]$ vil produktet være av samme klasse $[fg]$. Dette følger direkte fra forrige oppgave.
+    \item Velger vi klassene $[f]$ og $[g]$ ved å velge representantene:
+    \begin{equation*}
+    	f(x)=\begin{cases}
+        	1 	&x \text{ er et partall}\\
+            0	&\text{ellers}
+        \end{cases}
+    \end{equation*}
+    og 
+    \begin{equation*}
+    g(x)=\begin{cases}
+    	0	&x \text{ er et partall}\\
+        1	&\text{ellers}
+    \end{cases}
+    \end{equation*}
+    ser vi at $[f]\neq[\bar{0}]$ og $[g]\neq[\bar{0}]$ siden de er forskjellige i uendelig mange punkter (nemlig når $x$ er henholdsvis et partall og et odeltall). Videre ser vi at $\displaystyle (fg)(x)=\begin{cases}0&x\text{ er et partall}\\0&\text{ellers}\end{cases} \quad= \bar{0}$, så $[f]\cdot[g]=[fg]=[\bar{0}]$. 
+    \item %Vis at om for f og g gjelder relasjonen må den også gjelde for vilkårlige f' og g' av samme klasse
+    Vi definerer relasjonen $\leq$ på $X/\sim$ ved
+    \begin{equation*}
+    	[f]\leq[g]\,\Longleftrightarrow\,\left\{n \in \mathbb{N}\, |\, f(n) > g(n)\right\}\,\text{er endelig}
+    \end{equation*}
+    og for alle $f,g\in X/\sim$ definerer vi mengden
+    \begin{equation*}
+    	G_{f,g}=\left\{n\in\mathbb{N}\,|\,f(n) > g(n)\right\}.
+    \end{equation*} 
+    For at relasjonen skal være veldefinert trenger vi at relasjonen holder uavhengig av hvilke representanter vi velger for klassene. Anta at vi velger $f,f'$ som representanter for $[f]$ og $g,g'$ som representanter for $[g]$. Vi observerer at  $f'(x)>g(x)\Rightarrow \left( f(x)>g(x)\vee f'(x)\neq f(x) \right)$, så $G_{f',g}\subseteq G_{f,g}\bigcup D_{f',f}$, men siden $f\sim f'$ er $D_{f',f}$ endelig, og siden $[f]\leq [g]$ er $G_{f,g}$ endelig, så $G_{f',g}$ er endelig. Tilsvarende argument holder for $G_{f',g'}\subseteq G_{f',g}\bigcup D_{g',g}$ som viser at $G_{f',g'}$ er endelig, og dermed har vi $[f]\leq[g]\Rightarrow [f']\leq[g']$ for vilkårlige representanter $f\sim f',g\sim g'$ , så $[f]\leq[g]$ uavhengig av representanter for klassene.
+    
+    \item Vi ser at for alle $f\in X$ gjelder $G_{f,f}=\emptyset$, så $[f]\leq[f]$, så $\leq$ er refleksiv. Så ser vi at om vi har $[f]\leq[g]$ og $[g]\leq[f]$ vet vi at både $G_{f,g}$ og $G_{g,f}$ er endelig, men som en rask observasjon ser vi at $D_{f,g}=G_{f,g}\bigcup G_{g,f}$, og $G_{f,g}\bigcup G_{g,f}$ er endelig, så $[f]=[g]$. Dermed er $\leq$ antisymmetrisk.
+    
+    Anta så at $[f]\leq[g]$ og $[g]\leq[h]$, dvs. $G_{f,g}$ og $G_{g,h}$ er endelig. Vi observerer så at
+    \begin{equation*} \begin{aligned}
+    	f(x)>h(x)\Longleftrightarrow &\left(f(x)>g(x)>h(x)\right)\vee\\
+        &\left(g(x)\geq f(x)>h(x)\right)\vee\\
+        &\left(f(x)>h(x)\geq g(x)\right)
+    \end{aligned} \end{equation*}
+    Vi ser videre at
+    %$f(x)>g(x)>h(x)$ medfører at $x\in G_{f,g}\bigcap G_{g,h}$, $g(x)\geq f(x)>h(x)\Rightarrow g(x)>h(x)$ medfører $x\in G_{g,h}$, og at $f(x)>h(x)\geq g(x)\Rightarrow f(x)>g(x)$ medfører $x\in G_{f,g}$. 
+    
+    \begin{equation*} \begin{aligned}
+    f(x)>g(x)>h(x)		&\Rightarrow f(x)>g(x)\wedge g(x)>h(x)	\\&\Rightarrow x\in G_{f,g}\bigcap G_{g,h}\\
+    g(x)\geq f(x) > h(x)	&\Rightarrow g(x)>h(x)		\\&\Rightarrow x\in G_{g,h}\\
+    f(x)>h(x)\geq g(x)		&\Rightarrow f(x)>g(x)		\\&\Rightarrow  x\in G_{f,g}
+    \end{aligned} \end{equation*}
+    
+    Alt i alt har vi $f(x)>h(x)\Longrightarrow x\in \left(G_{f,g}\bigcap G_{g,h}\right)\bigcup G_{g,h}\bigcup G_{f,g}=G_{f,g}\bigcup G_{g,h}$. Dermed har vi $G_{f,h}\subseteq G_{f,g}\bigcup G_{g,h}$.   Antar vi at $[f]\leq[g]$ og $[g]\leq[h]$, dvs. $G_{f,g}$ og $G_{g,h}$ er endelig, ser vi også at $G_{f,g}\bigcup G_{g,h}$ er endelig, så $G_{f,h}$ er endelig og vi får $[f]\leq[h]$. Dermed er $\leq$ transitiv.
+    
+    Siden $\leq$ er refleksiv, antisymmetrisk og transitiv er det en partiell ordning.
+    
+    Velger vi 
+    $\displaystyle f(x)= \begin{cases}
+    	1	&x \text{ er et partall}\\
+        0	&\text{ellers}
+	\end{cases}$ og 
+    $\displaystyle g(x) = \begin{cases}
+    	0	&x \text{ er et partall}\\
+        1 	&\text{ellers}
+	\end{cases}$ ser vi at både $[f]\nleq[g]$ og $[g]\nleq[f]$, så $\leq$ er ikke en total ordning.
+\end{enumerate}
+
+\section*{Oppgave 2}
+\begin{enumerate}[label=(\roman*)]
+	\item Vi ser at $ x\in\sigma(x)$, så $\sigma(x)\neq\emptyset$ for alle mengder $x$.
+    \item Siden $\emptyset\in A$ for alle induktive mengder, følger det at $\emptyset\in\omega$. For enklere notasjon lar vi $\mathcal{A}$ være familien av alle induktive mengder. Anta at $x\in\omega$. Da må $x\in\bigcap_{A\in\mathcal{A}}A$, men siden for alle $A\in\mathcal{A}$ gjelder $x\in A\Rightarrow\sigma(x)\in A$, så $\sigma(x)\in\bigcap_{A\in\mathcal{A}}A$, og dermed er $\sigma(x)\in\omega$. Dermed gjelder både $\emptyset\in\omega$ og for alle $x\in\omega$, $\sigma(x)\in\omega$, så $\omega$ er en induktiv mengde.
+    \item Anta at $P$ er en egenskap slik at 
+    \begin{equation*} \begin{aligned}
+    	&P(\emptyset)\\
+        \forall x \in \omega \quad &P(x) \Rightarrow P(\sigma(x))
+    \end{aligned} \end{equation*}
+	La $\omega'=\left\{x\in\omega\,|\,P(x)\right\}$. Siden $P(\emptyset)$ og $\emptyset\in\omega$ må vi ha $\emptyset\in\omega '$. Videre ser vi at $P(x)\Rightarrow P(\sigma(x))$, så $x\in\omega'\Rightarrow \sigma(x)\in\omega'$, men dette medfører at $\omega'$ er en induktiv mengde, men siden $\omega'\subseteq \omega$ og $\omega$ er den minste induktive mengden må vi ha $\omega'=\omega$, så $\forall x \in\omega\quad P(x)$.
+    
+    \item Vi lar påstanden $P$ være gitt ved $P(x) \Longleftrightarrow \left(\forall y\quad y \in x \Rightarrow  y\subset x\right)$. 
+    Vi ser at $\forall y\quad y\notin\emptyset$, så utgangspunktet for implikasjonen er aldri oppfylt, så dermed er $P(\emptyset)$ oppfylt.
+    %Vi ser at $P(\emptyset)$ er oppfylt siden $\forall y\quad y\notin\emptyset$, så utgangspunktet for implikasjonen er aldri oppfylt. 
+    Anta så at $P(x)$ gjelder for en vilkårlig $x\in\omega$, dvs. $\forall y\quad y \in x \Rightarrow y\subset x$. Videre har vi at  $y\in\sigma(x)=x \bigcup \left\{x\right\}$, så $y\in x \vee y= x$. Vi tar hvert tilfelle hver for seg. 
+    
+    Anta først at $y \in x$. Da har vi fra antagelsen av $P(x)$ at $y\subset x$, så $y\subset x\bigcup \left\{x\right\}=\sigma(x)$, så $y\subset\sigma(x)$.
+    
+    Anta så heller at $y = x$. Da gjelder også $y\subset x\bigcup\left\{x\right\}=\sigma(x)$. 
+    
+    Dermed har vi vist at $P(x)\Rightarrow P(\sigma(x))$. Ved induksjon medfører dette at $\forall x\in\omega\quad P(x)$, eller med andre ord $\forall x\in\omega,\,\forall y\quad y\in x \Rightarrow y\subset x$. 
+    
+    \item Vi antar for motsigelse at $\exists x,y\in \omega\quad x\in y \wedge y\in x$, men fra forrige oppgave ser vi at dette medører at $x\subset y \wedge y\subset x$ som er en selvmotsigelse, så vår antagelse var feil, og dermed har vi $\forall x,y\in \omega \quad \neg\left(x\in y \wedge y \in x\right)$.
+    
+    \item Siden vi har $\sigma(x)=\sigma(y)$ følger det at $x\in \sigma(y)=y\bigcup \left\{y\right\}$, så $x\in y\vee x = y$. Tilsvarende kan vi resonere for at $y\in x \vee y=x$. Fra dette får vi fire forskjellige tilfeller:
+    
+    \begin{equation*} \begin{aligned}
+    (x\in y&\wedge y\in x) \vee\\
+    (x\in y&\wedge y = x) \vee\\
+    (x = y &\wedge y\in x)\vee\\
+    (x=y &\wedge y=x)
+    \end{aligned} \end{equation*}
+    
+    men fra forrige oppgave vet vi at vi ikke kan ha $x\in y \wedge y\in x$ så vi må ha $x=y$. Dermed får vi $\sigma(x)=\sigma(y)\Rightarrow x=y$ og dermed er $\sigma$ injektiv.
+    
+    \item Anta for motsigelse at $\exists x\in\omega\setminus\left\{\emptyset\right\},\,\nexists y\in\omega \quad x= \sigma(y)$. Da kan vi trygt fjerne $x$ fra $\omega$ og beholde egenskapen ved $\omega$ som en induktiv mengde, men dette motsier at $\omega$ allerede var den minste induktive mengden, så vår antagelse var feil. Dermed har vi at $\forall x\in\omega\setminus\left\{\emptyset\right\},\,\exists y\in\omega\quad x=\sigma(y)$, så $\sigma$ er surjektiv. 
+\end{enumerate}
+\end{document}

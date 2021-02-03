@@ -1,0 +1,123 @@
+\documentclass{article}[norsk]
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb}
+\usepackage{stmaryrd}
+\usepackage[norsk]{babel}
+
+\title{MAT1140 - Oblig 2}
+\author{Jon-Magnus Rosenblad}
+\date{October 2018}
+
+\begin{document}
+
+\maketitle
+
+\section*{Oppgave 1}
+\textit{Definisjon} Vi sier en mengde er \textbf{relevant til oppgaven} om den er ikke-tom, totalt ordnet og endelig. En mengde som er relevant til oppgaven kaller vi \textbf{en relevant mengde}.
+\\\\
+(i) Vi ønsker å vise at alle relevante mengder har et største element. 
+
+La $A$ være en relevant mengde med kardinalitet $|A| = 1$, dvs. mengden består av kun ett element $a$. Vi har at $a\geq a$, så $a$ er det største elementet i $A$. 
+
+Anta at alle relevante mengder $X$ med kardinalitet $|X|\leq k$ har et største element. Anta så at $A$ er en relevant mengde med kardinalitet $|A| = k+1$. Velg et vilkårlig element $a\in A$ og partisjonerer $A$ i to disjunkte delmengder; $L_a=\left\{x\in A\, \middle|\, x\leq a\right\}$ og $G_a=\left\{x\in A\,\middle|\,x>a\right\}$. Her har vi to tilfeller: (1) $G_a=\emptyset$ og $a$ er det største elementet, eller (2) $G_a$ er en relevant mengde og $|G_a|\leq k$ (siden $a\notin G_a$). Siden $G_a$ er en relevant mengde har finnes det et største element $g\in G_a$ mhp. $G_a$, men per definisjon av $G_a$ har vi $g>a$, og siden $\leq$ er transitiv har vi $\forall x\in L_a\quad g>x$, så $g$ er et største element for $A=L_a\bigcup G_a$. 
+
+  Vi har dermed, ved induksjon, at alle relevante mengder har et største element.
+\\\\
+(ii) %Bijeksjonen ved å hele tiden matche de to største elementene og innskrumpe mengdene. Denne bijeksjonen er unik fordi om det er to forskjellige er det en av delmengdene hvor de er forskjellige (ved induksjon), men da må ordningen brytes for to elementer.
+La $A$ være en relevant mengde med kardinalitet 1. Da finnes det bare én voksende bijeksjon $f:\llbracket  0,1\llbracket\rightarrow A$, nemlig $f=\left\{(0,a)\right\}$ hvor $a$ er det eneste elementet i $A$.
+
+Anta at for alle relevante mengder $X$ med kardinalitet $k$ finnes det en og bare en voksende bijeksjon $g:\llbracket 0,k\llbracket \rightarrow X$. La $A$ være en relevant mengde med med kardinalitet $k + 1$ og la $a$ være det største elementet i $A$. Da finnes det en og bare en voksende bijeksjon $h:\llbracket 0,k\llbracket\rightarrow A\setminus \left\{a\right\}$. Vi lager en ny avbildning $f:\llbracket 0,k+1\llbracket\rightarrow A$ ved å definere
+\begin{equation*}
+f(x)=\begin{cases}
+	h(x)	&x\in \llbracket 0,k\llbracket\\
+    a		&x=k+1%\text{ellers}
+\end{cases}
+\end{equation*}
+%Det kan enkelt sjekkes at dette er en voksende bijeksjon (direkte) og at den er unik (motsigelse).
+Det er tydelig en surjeksjon, for om vi har en vilkårlig $y\in A$ har vi enten $y=a$ eller $y\in A\setminus \{a\}$. Om $y=a$ har vi $f(k+1)=y$, ellers har vi $(f\circ h^{-1})(y)=y$. Det er også tydelig en injeksjon, for om vi har $x,x'\in \llbracket 0,k+1\llbracket\quad x\neq x'$, må vi ha $x,x'\in \llbracket 0,k\llbracket$ eller at en av $x,x'=k + 1$. Om $x,x'\in\llbracket 0,k\llbracket$. Da har vi $f(x)=h(x)\neq h(x')=f(x')$ siden $h$ er injektiv. Anta heller uten tap av generalitet at $x=k+1$ og $x'\in\llbracket 0,k\llbracket$. Da har vi $f(x)=a$ og $f(x')=h(x')\neq a$. Dermed er $f$ injektiv. Siden $f$ er surjektiv og injektiv er den bijektiv.
+
+La $f':\llbracket 0,k+1\llbracket\rightarrow A$ være en annen strengt voksende bijeksjon. Da har vi enten $f'(k+1)=a$ eller $f'(k+1)\neq a$. Anta $f'(k+1)=a$. Da har vi at $f'\mid_{\llbracket 0,k\llbracket}:\llbracket 0,k\llbracket\rightarrow A\setminus\{a\}$(dvs. restriksjonen av $f'$ til $\llbracket 0,k\llbracket$) er en bijeksjon, men da er $f'\mid_{\llbracket 0,k\llbracket}=h$ fordi $h$ er den eneste strengt voksende bijeksjonen fra $\llbracket 0,k\llbracket$ til $A\setminus \{a\}$. Men da har vi $f'=f$. 
+
+Anta heller at $f'(k+1)\neq a$.  Da har vi $f'(k+1)\in A\setminus\{a\}$ og $\exists n\in\llbracket 0,k\llbracket\quad f'(n)=a$. Men da har vi $n< k+1$ og $f'(k+1)<f'(n)$ som motsier at $f'$ er strengt voksende.
+
+Dermed er $f$ unik.
+\\\\
+(iii) %Velg en ordning av A som er standardordningen. La f være den tilhørende bijeksjonen [0,n]-->A. Da er det en bijeksjon f\ring g-1: [0,n]-->[0,n] for alle g tilhørende en ordning på A.
+La $A$ være en endelig mengde med kardinalitet $n$. Velg en vilkårlig bijeksjon $g:\llbracket 0,n\llbracket\rightarrow A$. Denne bijeksjonen induserer en ordning $\leq_g$ på $A$ ved $g(a)\leq_g g(b)\Longleftrightarrow a\leq b$ for alle $a,b\in \llbracket 0,n\llbracket$. Denne ordningen er tydelig unik ettersom $g$ er en bijeksjon.
+
+La $\mathcal{A}$ være mengden av bijeksjoner fra $\llbracket 0,n\llbracket$ til $A$ og la $\mathcal{G}$ være mengden av ordninger på $A$. La $\phi:\mathcal{A}\rightarrow\mathcal{G}$ være en avbildning definert ved $\phi(g)=\leq_g$. 
+
+Vi ser at $\leq_g$ er total på $A$ ettersom $g$ er en bijeksjon og $\leq_\mathbb{N}$ er total på $\llbracket 0,n\llbracket$. Vi ser også at under $\leq_g$ er $g$ voksende og dermed er $g$ den unike voksende bijeksjonen fra $\llbracket 0,n\llbracket$ på $A$, så $\phi$ er injektiv. Vi har også at hver ordning på $A$ har en unik voksende bijeksjon fra $\llbracket 0,n\llbracket$ til $A$, så $\phi$ er surjektiv. Dermed er $\phi$ en bijeksjon, så $\left|\mathcal{A}\right|=\left|\mathcal{G}\right|$. 
+
+ La $\leq$ være en vilkårlig ordning på $A$. Da finnes det en og bare en voksende bijeksjon $f:\llbracket 0,n\llbracket\rightarrow A$ under ordningen $\leq$.
+
+Videre definerer vi $\mathcal{B}$ som mengden bijeksjoner fra $\llbracket 0,n\llbracket$ til $\llbracket 0,n\llbracket$ og $\sigma:\mathcal{B}\rightarrow\mathcal{A}$ ved $\sigma(h)=f\circ h$. Vi ser at for alle $l\in\mathcal{A}$ har vi $\sigma\left(f^{-1}\circ l\right)=l$, så $\sigma$ er surjektiv. Videre vet vi at om vi $h,h'\in\mathcal{B}$ og $h\neq h'$, har vi $\sigma(h)=f\circ h\neq f\circ h'=\sigma(h)$ ettersom $f$ er en bijeksjon, så $\sigma$ er injektiv. Dermed er $\sigma$ en bijeksjon.
+
+La $\psi=\phi\circ\sigma:\mathcal{B}\rightarrow\mathcal{G}$. Siden $\psi$ er en komposisjon av bijeksjoner er det en bijeksjon, så $\left|\mathcal{B}\right|=\left|\mathcal{G}\right|$.
+%$\psi:\mathcal{G}\rightarrow\mathcal{B}$ ved $\psi(x)=\left(\phi^{-1}(x)\circ f^{-1}\right)(x)$. Vi ser at for hver bijeksjon
+% Vi trenger å vise at envher bijeksjon fra [0,n] til [0,n] kan beskrives som en bijeksjon fra [0,n] til A \circ f^{-1}
+
+\section*{Oppgave 2}
+% Anta A er en delmengde av N uten minste element. Da er A den tomme mengden (ved induksjon slik som beskrevet i oppgaven) for ellers har det et største element, men snittet med intervallet fra 0 til det største elementet er tomt.
+Anta at $A$ er en delmengde av $\mathbb{N}$ uten minste element. Da har vi at $\llbracket 0,1\llbracket\bigcap A=\emptyset$ for ellers ville 0 vært et minste element i $A$ ettersom det er det minste elementet i $\mathbb{N}$. 
+
+Anta at $\llbracket 0,k\llbracket\bigcap A=\emptyset$. Da har vi at $\llbracket 0,k+1\llbracket\bigcap A=\emptyset$ for ellers ville $k+1$ vært et minste element i $A$. Dermed har vi ved induksjon at $\forall n\in\mathbb{N}\quad\llbracket 0,n\llbracket\bigcap A=\emptyset$. Da må $A$ være den tomme mengden, for ellers finnes det en $a\in A$, men vi har at $a\in\llbracket 0,a+1\llbracket$ og  $\llbracket 0,a+1\llbracket\bigcap A=\emptyset$, som er en motsigelse. Vi har derfor at alle ikke-tomme delmengder av $\mathbb{N}$ har et minste element, så $\mathbb{N}$ er velordnet.
+
+\section*{Oppgave 3}
+% Siden f er strengt voksende er det en injeksjon. La a være det minste elementet i A og at det finnes en b i A s.a. f(b) < b. Da finnes en motsigelse når man sammenlikner [a,b] med f([a,b]) ifølge dueskuffprinsippet.
+La $A$ være velordnet og $f:A\rightarrow A$ være strengt voksende. Anta for motsigelse at det finnes en $a\in A\quad f(a)<a$. Vi definerer følgen $\left\{u_n\right\}_{n\in\mathbb{N}}$ ved 
+
+\begin{equation*} \begin{aligned}
+u_0 &= b\\
+\forall n\in \mathbb{N}\quad u_{n+1} &= f(u_n)
+\end{aligned} \end{equation*}
+Anta for en vilkårlig $k\in\mathbb{N}$, $u_k < f(u_k)=u_{k+1}$. Da har vi $u_{k+1} = f(u_k) < f(u_{k+1})$ ettersom $f$ er strengt voksende. Dermed har vi ved indusksjon $\forall n\in\mathbb{N}\quad u_n<f(u_n)$. Men dette er umilig siden da har ikke mengden av elementer i følgen noe minste element, som motsier at $A$ er velordnet.
+\section*{Oppgave 4}
+(i) % Vis at den er transitiv, antisymmetrisk og refleksiv
+La $A,B$ være to ordnede mengder. Vi definerer en relasjon på $A\times B$ ved, for alle $(x,y),(x',y')\in A\times B$:
+\begin{equation*}
+(x,y)\leq(x',y')\Longleftrightarrow (x<_A x')\vee (x=x' \wedge y\leq_B y')
+\end{equation*}
+Siden $x=x\wedge y\leq_B y$ for alle $(x,y)\in A\times B$ har vi $(x,y)\leq(x,y)$ og dermed er $\leq$ refleksiv.
+
+Videre har vi at om $(x,y)\leq(x',y')\wedge(x',y')\leq(x,y)$ har vi 
+\begin{equation*} \begin{aligned}
+	%\left( (x <_{A} x') \vee (x=x'\wedge y\leq_{B} y')\right)
+    &\left( (x <_A x')\vee(x=x'\wedge y\leq_B y')\right)\wedge\\
+	&\left( (x' <_A x)\vee(x=x'\wedge y'\leq_B y)\right)
+\end{aligned} \end{equation*}
+%TODO: Finn ut hva som er feil i syntaksen.
+men vi kan ikke ha at både $(x<_A x')\wedge(x' <_A x)$ så vi må ha $x=x'$, men da kan vi fortsatt ikke ha hverken $x<_A x'$ eller $x'<_A x$, så vi må ha både $y\leq_B y'$ og $y'\leq_B y$, men da har vi $y=y'$, så $(x,y)=(x',y')$. Dermed er $\leq$ antisymmetrisk.
+
+Anta $(x,y)\leq (x',y')$ og $(x',y')\leq(x'',y'')$. Da har vi to muligheter for den første ulikheten, nemlig $x<_Ax'$ eller $x=x'\wedge y\leq_B y$. Anta $x<_A x'$. Da har vi $x<_A x''$ så $(x,y)\leq(x'',y'')$. Anta så heller at $x=x'$ og at $y\leq_B y'$. Da har vi $x=x''$ eller $x<_A x''\wedge y\leq_By''$ ved  transitivitet av $\leq_B$, så $(x,y)\leq(x'',y'')$. Dermed er $\leq$ transitiv.
+
+Siden $\leq$ er refleksiv, antisymmetrisk og transitiv er det en ordensrelasjon på $A\times B$. 
+\\\\
+(ii) % Anta A,B velordnet. La X subset A\cross B. Definer mengden A' = {a | \exist (a,b) \in X} og la alpha være minste element av A'. Velg delmengden B' = {b\in B | (alpha,b) \in X} og velg minste element beta. Da er minste element av X (alpha, beta)
+Anta $A,B$ er velordnet. La $X$ være en vilkårlig ikketom delmengde av $A\times B$. Vi definerer $A'=\left\{a\in A\,|\, \exists b\in B\quad (a,b)\in X\right\}$. Siden $A$ er velordnet og $A'$ er ikke-tom, har $A'$ et minste element. La $\alpha$ være dette minste elementet. Så definerer vi $B'=\left\{b\in B\,|\,(\alpha,b)\in X\right\}$. Siden $B$ er velordnet og $B'$ er ikke-tom har $B'$ et minste element $\beta$. Vi har så at $(\alpha,\beta)\leq x$ for alle $x\in X\setminus (\{\alpha\}\times B')$siden $\alpha$ er minste element i $A'$. Videre har vi at $(\alpha,\beta)$ er minste element i $\{\alpha\}\times B'$ siden $\beta$ er minste element i $B'$. Dermed er $(\alpha,\beta)$ minste element i $X$. 
+
+\section*{Oppgave 5}
+(i) % La a,b være to forskjellige elementer av A. Diagonaliser med x | --> b om x = a og b ellers. 
+La $A$ være en mengde med minst to elementer. Da finnes det to forskjellige elementer $a,b\in A$. Anta for motsigelse at $A^\mathbb{N}$ er tellbart. Da finnes en bijeksjon $\phi:\mathbb{N}\rightarrow A^\mathbb{N}$slik at vi kan nummerere elementene i $A^\mathbb{N}$. Vi definerer så en avbildning $f:\mathbb{N}\rightarrow A$definert ved
+\begin{equation*}
+f(x)=\begin{cases}
+	a	&(\phi(x))(x)=b\\
+    b	&\text{ellers}
+\end{cases},
+\end{equation*}
+men denne avbildningen er forskjellig fra alle andre avbildninger i $A^\mathbb{N}$ , som er en motsigelse ettersom det er en avbildning i $A^\mathbb{N}$, så $A^\mathbb{N}$ er ikke-tellbar.
+\\\\
+(ii) % Betrakt bijeksjonene som enten bytter om partall med neste oddetall og omvendt, eller ikke og knytt de sammen med avbildningene fra N til {0,1} (1 representerer at parret 2n og 2n + 1 byttes om, 0 byttes de ikke).
+La $f:\mathbb{N}\rightarrow \{0,1\}$ være en avbildning. Vi definerer for hver $f$ avbildningen $g_f:\mathbb{N}\rightarrow\mathbb{N}$ ved\footnote{Visuelt kan den tolkes som at de naturlige tallene deles inn i par slik at hvert partall parres med det neste oddetallet. Om $f(n)=1$ byttes parnummer $n$ plass og ellers forblir de slik de står.}
+\begin{equation*}
+g_f(n)=\begin{cases}
+	n	&f\left(\left\lfloor\frac{n}{2}\right\rfloor\right) = 0\\
+    n + 1 &f\left(\left\lfloor\frac{n}{2}\right\rfloor\right) = 1\wedge 2\mid n\\
+    n - 1 &f\left(\left\lfloor\frac{n}{2}\right\rfloor\right) = 1\wedge 2\nmid n
+\end{cases}
+\end{equation*}
+La $G$ være mengden av slike avbildninger og $\phi:\{0,1\}^\mathbb{N}\rightarrow G$ være avbildningen slik at $\phi(f)=g_f$. $\phi$ er tydelig en surjeksjon. Vi ser også at om vi har $f,f'\in\{0,1\}^\mathbb{N}$ og $f\neq f'$ må det finnes $n\in\mathbb{N}\quad f(n)\neq f'(n)$, men da har vi $g_f(2\,n)\neq g_{f'}(2\, n)$, og dermed er $g_f\neq g_{f'}$, så $\phi$ er en injeksjon. Dermed er $\phi$ en bijeksjon og $|G|=\left|\{0,1\}^\mathbb{N}\right|$. 
+
+Videre tar vi for oss en vilkårlig $g_f\in G$. Vi ser at $g_f\circ g_f=\text{id}_\mathbb{N}$, så $g_f$ er en bijeksjon. La $\overline{\mathbb{N}^\mathbb{N}}$ være mengden bijeksjoner fra $\mathbb{N}$ til $\mathbb{N}$. Da har vi $G\subseteq \overline{\mathbb{N}^\mathbb{N}}$, så $|G|\leq\left|\overline{\mathbb{N}^\mathbb{N}}\right|$. Videre har vi at $\{0,1\}^\mathbb{N}$ er ikke-tellbar (fra forrige deloppgave) og $|G|=\left|\{0,1\}^\mathbb{N}\right|$, så $G$ er ikke-tellbar, men da er heller ikke $\overline{\mathbb{N}^\mathbb{N}}$ tellbar.
+%Videre tar vi for oss en vilkårlig $g_f\in G$. Vi obesrverer fra definisjonen av $g_f$ at $\displaystyle\left\lfloor \frac{g_f(n)}{2}\right\rfloor=\left\lfloor \frac{n}{2}\right\rfloor$. La $m \in \mathbb{N}$. Om $f\left(\left\lfloor\frac{m}{2}\right\rfloor\right)=0$ har vi $g(m)=m$. Ellers har vi to tilfeller, nemlig $2\mid m$ og $2\nmid m$. 
+\end{document}
